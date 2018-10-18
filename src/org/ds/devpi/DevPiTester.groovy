@@ -8,6 +8,8 @@ class DevPiTester implements Serializable{
     public String certsDir = "certs\\"
     public String devpiExecutable
     public String pkgVersion
+    public String userName
+    public String userPassword
 
     DevPiTester(devpiExecutable) {
         this.devpiExecutable = devpiExecutable
@@ -38,5 +40,22 @@ class DevPiTester implements Serializable{
             command += " --clientdir " + certsDir
         }
         return  command
+    }
+
+    def buildLoginCommand(){
+        def command = ""
+
+        command += devpiExecutable
+
+        command += " login " + userName
+
+        command += " --password " + userPassword
+
+        if(certsDir){
+            command += " --clientdir " + certsDir
+        }
+        command += " -y"
+
+        return command
     }
 }
