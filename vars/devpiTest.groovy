@@ -7,7 +7,7 @@ def call(Map args) {
     args = defaultArgs << args;
 //    bat "${args.devpiExecutable} use ${args.devpiUrl} --clientdir ${args.certsDir}"
 
-    bat "${args.devpiExecutable} use ${args.index} --clientdir ${args.certsDir}"
+    bat "${args.devpiExecutable} use ${args.url} --clientdir ${args.certsDir}"
 
     withCredentials([usernamePassword(credentialsId: "DS_devpi", usernameVariable: 'DEVPI_USERNAME', passwordVariable: 'DEVPI_PASSWORD')]) {
         bat "${args.devpiExecutable} login DS_Jenkins --clientdir ${args.certsDir} --password ${DEVPI_PASSWORD}"
