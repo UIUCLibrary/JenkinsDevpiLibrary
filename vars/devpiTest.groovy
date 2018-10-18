@@ -36,11 +36,3 @@ def call(Map args) {
     }
 
 }
-
-def test_devpi(DevpiPath, DevpiIndex, packageName, PackageRegex, certsDir="certs\\"){
-
-    echo "Testing on ${NODE_NAME}"
-    withEnv(['PYTEST_ADDOPTS=-vv']) {
-        bat "${DevpiPath} test --index ${DevpiIndex} --verbose ${packageName} -s ${PackageRegex} --clientdir ${certsDir}"
-    }
-}
