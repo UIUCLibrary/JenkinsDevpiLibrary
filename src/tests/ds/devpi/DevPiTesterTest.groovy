@@ -30,11 +30,16 @@ class DevPiTesterTest extends GroovyTestCase{
         }
 
     }
-    void testLogingCommand(){
+    void testLogInCommand(){
         def tester = new DevPiTester("devpi.exe")
         tester.userName = "myusername"
         tester.userPassword = "mypassword"
 
-        assertToString(tester.buildLoginCommand(), "devpi.exe login myusername --password mypassword --clientdir certs\\ -y" )
+        assertToString(tester.buildLogInCommand(), "devpi.exe login myusername --password mypassword --clientdir certs\\ -y" )
+    }
+    void testUseCommand(){
+        def tester = new DevPiTester("devpi.exe")
+        tester.url = "https://devpi.library.illinois.edu"
+        assertToString(tester.buildUseCommand(), "devpi.exe use https://devpi.library.illinois.edu --clientdir certs\\" )
     }
 }

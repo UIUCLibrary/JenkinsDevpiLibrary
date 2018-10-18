@@ -10,7 +10,7 @@ def call(Map args) {
     args = defaultArgs << args
 
 
-    tester = new DevPiTester(args.devpiExecutable)
+    DevPiTester tester = new DevPiTester(args.devpiExecutable)
 
     tester.index = args.index
     tester.pkgName = args.pkgName
@@ -19,16 +19,15 @@ def call(Map args) {
     tester.pkgVersion = args.pkgVersion
 
     echo "Testing on ${NODE_NAME}"
-//    tester.connect()
 
+    bat "${tester.buildUseCommand()}"
 
-    bat "${args.devpiExecutable} use ${args.url} --clientdir ${args.certsDir}"
     withCredentials([usernamePassword(credentialsId: "DS_devpi", usernameVariable: 'DEVPI_USERNAME', passwordVariable: 'DEVPI_PASSWORD')]) {
 //        bat "${args.devpiExecutable} login DS_Jenkins --clientdir ${args.certsDir} --password ${DEVPI_PASSWORD}"
         tester.userName = "${DEVPI_USERNAME}"
         tester.userPassword = "${DEVPI_PASSWORD}"
     }
-    bat "${tester.buildLoginCommand()}"
+    bat "${tester.buildLogInCommand()}"
     bat "${args.devpiExecutable} use ${args.index} --clientdir ${args.certsDir}"
 
     withEnv(["PYTEST_ADDOPTS=${args.pytestArgs}"]) {
