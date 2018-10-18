@@ -7,8 +7,7 @@ def call(Map args) {
         pytestArgs: "-vv",
     ]
 
-    args = defaultArgs << args;
-//    bat "${args.devpiExecutable} use ${args.devpiUrl} --clientdir ${args.certsDir}"
+    args = defaultArgs << args
 
     bat "${args.devpiExecutable} use ${args.url} --clientdir ${args.certsDir}"
 
@@ -25,7 +24,7 @@ def call(Map args) {
 
     echo "Testing on ${NODE_NAME}"
 
-    withEnv(['PYTEST_ADDOPTS=-vv']) {
+    withEnv(["PYTEST_ADDOPTS=${args.pytestArgs}"]) {
         bat "${tester.buildTestCommandString}"
     }
 
