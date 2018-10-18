@@ -22,7 +22,7 @@ pipeline{
                         url: "https://devpi.library.illinois.edu",
                         index: "hborcher/dev",
                         pkgName: "pyhathiprep==0.0.1",
-                        pkgeRegex: "zip"
+                        pkgRegex: "zip"
 
                 )
             }

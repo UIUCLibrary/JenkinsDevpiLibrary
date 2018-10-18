@@ -13,7 +13,7 @@ def call(Map args) {
         bat "${args.devpiExecutable} login DS_Jenkins --clientdir ${args.certsDir} --password ${DEVPI_PASSWORD}"
         bat "${args.devpiExecutable} use ${args.index} --clientdir ${args.certsDir}"
     }
-    test_devpi(args.devpiExecutable, args.index, args.pkgName, args.pkgeRegex)
+    test_devpi(args.devpiExecutable, args.index, args.pkgName, args.pkgRegex)
 }
 
 def test_devpi(DevpiPath, DevpiIndex, packageName, PackageRegex, certsDir="certs\\"){
