@@ -15,5 +15,17 @@ pipeline{
                 devpiVersion("venv\\Scripts\\devpi.exe")
             }
         }
+        stage("Test devpiTest"){
+            steps{
+                devpiTest(
+                        devpiExecutable: "venv\\Scripts\\devpi.exe",
+                        index: "hborcher/dev",
+                        pkgName: "pyhathiprep==0.0.1",
+                        pkgeRegex: "zip"
+
+                )
+            }
+        }
+
     }
 }
