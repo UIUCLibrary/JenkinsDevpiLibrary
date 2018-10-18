@@ -12,7 +12,7 @@ pipeline{
         }
         stage("Test Devpi Version"){
             steps{
-                devpiVersion("venv/Scripts/devpi.exe")
+                devpiVersion("venv\\Scripts\\devpi.exe")
             }
         }
     }
