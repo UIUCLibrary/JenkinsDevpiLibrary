@@ -12,7 +12,7 @@ class DevPiTesterTest extends GroovyTestCase{
         tester.pkgName = "pyhathiprep"
         tester.pkgVersion = "0.0.1"
         tester.pkgRegex = "zip"
-        assertToString(tester.buildTestCommandString(), "devpi.exe --index hborcher/dev pyhathiprep==0.0.1 -s zip --clientdir certs\\")
+        assertToString(tester.buildTestCommandString(), "devpi.exe test --index hborcher/dev pyhathiprep==0.0.1 -s zip --clientdir certs\\")
     }
 
     void testNormalsAnyVersion() {
@@ -21,7 +21,7 @@ class DevPiTesterTest extends GroovyTestCase{
         tester.index = "hborcher/dev"
         tester.pkgName = "pyhathiprep"
 
-        assertToString(tester.buildTestCommandString(), "devpi.exe --index hborcher/dev pyhathiprep --clientdir certs\\")
+        assertToString(tester.buildTestCommandString(), "devpi.exe test --index hborcher/dev pyhathiprep --clientdir certs\\")
     }
     void testNoDevpiExecutable() {
         shouldFail {

@@ -21,6 +21,8 @@ class DevPiTester implements Serializable{
         }
         command += devpiExecutable
 
+        command += " test"
+
         command += " --index " + index
         command += " " + pkgName
 
