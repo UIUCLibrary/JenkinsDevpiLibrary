@@ -1,13 +1,13 @@
 package org.ds.devpi
 
 class DevPiTester implements Serializable{
-    public url
-    public index
-    public pkgName
-    public pkgRegex
-    public certsDir = "certs\\"
-    public devpiExecutable
-    public pkgVersion
+    public String url
+    public String index
+    public String pkgName
+    public String pkgRegex
+    public String certsDir = "certs\\"
+    public String devpiExecutable
+    public String pkgVersion
 
     DevPiTester(devpiExecutable) {
         this.devpiExecutable = devpiExecutable
