@@ -25,7 +25,7 @@ def call(Map args) {
     echo "Testing on ${NODE_NAME}"
 
     withEnv(["PYTEST_ADDOPTS=${args.pytestArgs}"]) {
-        bat "${tester.buildTestCommandString}"
+        bat "${tester.buildTestCommandString()}"
     }
 
 }
