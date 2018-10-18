@@ -20,7 +20,7 @@ def call(Map args) {
     tester.pkgVersion = args.pkgVersion
     tester.url = args.url
 
-    withCredentials([usernamePassword(credentialsId: "${credentialsId}", usernameVariable: 'DEVPI_USERNAME', passwordVariable: 'DEVPI_PASSWORD')]) {
+    withCredentials([usernamePassword(credentialsId: "${args.credentialsId}", usernameVariable: 'DEVPI_USERNAME', passwordVariable: 'DEVPI_PASSWORD')]) {
         tester.userName = "${DEVPI_USERNAME}"
         tester.userPassword = "${DEVPI_PASSWORD}"
     }
