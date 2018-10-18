@@ -12,14 +12,13 @@ pipeline{
         }
         stage("Test Devpi Version"){
             steps{
-                echo "env.GIT_PREVIOUS_COMMIT = ${env.GIT_PREVIOUS_COMMIT}"
-                library "devpi@${env.GIT_PREVIOUS_COMMIT}"
+                library "devpi@$BRANCH_NAME"
                 devpiVersion("venv\\Scripts\\devpi.exe")
             }
         }
         stage("Test devpiTest"){
             steps{
-                library "devpi@${env.GIT_PREVIOUS_COMMIT}"
+                library "devpi@$BRANCH_NAME"
                 devpiTest(
                         devpiExecutable: "venv\\Scripts\\devpi.exe",
                         url: "https://devpi.library.illinois.edu",
