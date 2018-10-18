@@ -29,7 +29,8 @@ pipeline{
                         devpiExecutable: "venv\\Scripts\\devpi.exe",
                         url: "https://devpi.library.illinois.edu",
                         index: "hborcher/dev",
-                        pkgName: "pyhathiprep==0.0.1",
+                        pkgName: "pyhathiprep",
+                        pkgVersion: "0.0.1",
                         pkgRegex: "zip"
 
                 )

@@ -21,6 +21,8 @@ def call(Map args) {
     tester.pkgName = args.pkgName
     tester.pkgRegex = args.pkgRegex
     tester.certsDir = args.certsDir
+    tester.pkgVersion args.pkgVersion
+
     echo "Testing on ${NODE_NAME}"
 
     withEnv(['PYTEST_ADDOPTS=-vv']) {
