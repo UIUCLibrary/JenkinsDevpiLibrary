@@ -1,3 +1,6 @@
+//Library (@Devpi) _
+library identifier: 'DevPi', retriever: modernSCM([$class: 'GitSCMSource', credentialsId: '', id: '98ab3564-a34c-4645-acbf-e2fe00d3b429', remote: 'https://github.com/UIUCLibrary/JenkinsDevpiLibrary.git', traits: [[$class: 'LocalBranchTrait']]])
+
 pipeline{
     agent{
         label "Windows && Python3"
