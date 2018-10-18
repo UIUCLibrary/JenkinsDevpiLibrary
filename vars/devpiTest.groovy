@@ -17,6 +17,7 @@ def call(Map args) {
     tester.pkgRegex = args.pkgRegex
     tester.certsDir = args.certsDir
     tester.pkgVersion = args.pkgVersion
+    tester.url = args.url
 
     echo "Testing on ${NODE_NAME}"
 
