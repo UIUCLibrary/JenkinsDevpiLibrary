@@ -12,6 +12,7 @@ pipeline{
         }
         stage("Test Devpi Version"){
             steps{
+                echo "env.GIT_COMMIT = ${env.GIT_COMMIT}"
                 library "devpi@${env.GIT_COMMIT}"
                 devpiVersion("venv\\Scripts\\devpi.exe")
             }
