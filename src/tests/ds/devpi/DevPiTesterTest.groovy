@@ -5,7 +5,7 @@ import org.ds.devpi.DevPiTester
 
 class DevPiTesterTest extends GroovyTestCase{
 
-    void testNormal(){
+    void testNormalTestCommand(){
         def tester = new DevPiTester("devpi.exe")
         tester.url = "https://devpi.library.illinois.edu"
         tester.index = "hborcher/dev"
@@ -15,7 +15,7 @@ class DevPiTesterTest extends GroovyTestCase{
         assertToString(tester.buildTestCommandString(), "devpi.exe test --index hborcher/dev pyhathiprep==0.0.1 -s zip --clientdir certs\\")
     }
 
-    void testNormalsAnyVersion() {
+    void testNormalTestCommandAnyVersion() {
         def tester = new DevPiTester("devpi.exe")
         tester.url = "https://devpi.library.illinois.edu"
         tester.index = "hborcher/dev"
