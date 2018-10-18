@@ -5,6 +5,7 @@ def call(Map args) {
     ]
 
     args = defaultArgs << args;
+    bat "${DevpiPath} use ${args.devpiUrl} --clientdir ${args.certsDir}"
     test_devpi(args.devpiExecutable, args.index, args.pkgName, args.pkgeRegex)
 }
 
