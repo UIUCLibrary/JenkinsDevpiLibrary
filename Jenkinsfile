@@ -36,6 +36,12 @@ pipeline{
                 )
             }
         }
-
+        post{
+            cleanup{
+                dir("certs"){
+                    deleteDir()
+                }
+            }
+        }
     }
 }

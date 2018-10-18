@@ -65,4 +65,15 @@ class DevPiTester implements Serializable{
         }
         return command
     }
+
+    def buildSelectIndexCommand() {
+        def command = ""
+        command += devpiExecutable
+        command += " use " + index
+
+        if(certsDir){
+            command += " --clientdir " + certsDir
+        }
+        return command
+    }
 }
