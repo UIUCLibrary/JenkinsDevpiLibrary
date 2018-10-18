@@ -29,7 +29,7 @@ def call(Map args) {
         tester.userPassword = "${DEVPI_PASSWORD}"
     }
     bat "${tester.buildLogInCommand()}"
-    bat "${args.devpiExecutable} use ${args.index} --clientdir ${args.certsDir}"
+//    bat "${args.devpiExecutable} use ${args.index} --clientdir ${args.certsDir}"
 
     withEnv(["PYTEST_ADDOPTS=${args.pytestArgs}"]) {
         bat "${tester.buildTestCommandString()}"
