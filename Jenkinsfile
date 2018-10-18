@@ -36,11 +36,12 @@ pipeline{
                 )
             }
         }
-        post{
-            cleanup{
-                dir("certs"){
-                    deleteDir()
-                }
+
+    }
+    post{
+        cleanup{
+            dir("certs"){
+                deleteDir()
             }
         }
     }
