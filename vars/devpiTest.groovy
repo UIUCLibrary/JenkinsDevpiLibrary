@@ -7,6 +7,8 @@ def call(Map args) {
     args = defaultArgs << args;
 //    bat "${args.devpiExecutable} use ${args.devpiUrl} --clientdir ${args.certsDir}"
 
+    bat "${args.devpiExecutable} use ${args.index} --clientdir ${args.certsDir}"
+
     withCredentials([usernamePassword(credentialsId: "DS_devpi", usernameVariable: 'DEVPI_USERNAME', passwordVariable: 'DEVPI_PASSWORD')]) {
         bat "${args.devpiExecutable} login DS_Jenkins --clientdir ${args.certsDir} --password ${DEVPI_PASSWORD}"
         bat "${args.devpiExecutable} use ${args.index} --clientdir ${args.certsDir}"
@@ -16,10 +18,6 @@ def call(Map args) {
 
 def test_devpi(DevpiPath, DevpiIndex, packageName, PackageRegex, certsDir="certs\\"){
 
-    script{
-
-
-    }
     echo "Testing on ${NODE_NAME}"
     withEnv(['PYTEST_ADDOPTS=-vv']) {
         bat "${DevpiPath} test --index ${DevpiIndex} --verbose ${packageName} -s ${PackageRegex} --clientdir ${certsDir}"
