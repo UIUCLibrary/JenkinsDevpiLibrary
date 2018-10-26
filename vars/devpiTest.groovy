@@ -5,7 +5,8 @@ def call(Map args) {
     def defaultArgs = [
         certsDir: "certs\\",
         pytestArgs: "-vv",
-        credentialsId: "DS_devpi"
+        credentialsId: "DS_devpi",
+        detox: false
     ]
 
     args = defaultArgs << args
@@ -19,6 +20,7 @@ def call(Map args) {
     tester.certsDir = args.certsDir
     tester.pkgVersion = args.pkgVersion
     tester.url = args.url
+    tester.detox = args.detox
 
     withCredentials([usernamePassword(credentialsId: "${args.credentialsId}", usernameVariable: 'DEVPI_USERNAME', passwordVariable: 'DEVPI_PASSWORD')]) {
         tester.userName = "${DEVPI_USERNAME}"

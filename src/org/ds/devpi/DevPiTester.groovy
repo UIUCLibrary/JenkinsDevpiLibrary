@@ -10,6 +10,7 @@ class DevPiTester implements Serializable{
     public String pkgVersion
     public String userName
     public String userPassword
+    public Boolean detox
 
     DevPiTester(devpiExecutable) {
         this.devpiExecutable = devpiExecutable
@@ -36,6 +37,10 @@ class DevPiTester implements Serializable{
 
         if(certsDir){
             command += " --clientdir " + certsDir
+        }
+
+        if(detox){
+            command += " --detox"
         }
         return  command
     }
