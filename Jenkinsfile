@@ -7,7 +7,7 @@ pipeline{
             steps{
                 bat "${tool 'CPython-3.6'} -m venv venv"
                 bat "venv\\Scripts\\python.exe -m pip install pip --upgrade --quiet"
-                bat "venv\\Scripts\\python.exe -m pip install devpi-client detox==0.15 tox==3.5.2"
+                bat "venv\\Scripts\\python.exe -m pip install devpi-client detox"
             }
         }
         stage("Test Devpi Version"){
@@ -17,34 +17,40 @@ pipeline{
             }
         }
         stage("Test devpiTest"){
-            steps{
-                library "devpi@$BRANCH_NAME"
-                devpiTest(
-                        devpiExecutable: "venv\\Scripts\\devpi.exe",
-                        url: "https://devpi.library.illinois.edu",
-                        index: "hborcher/dev",
-                        pkgName: "pyhathiprep",
-                        pkgVersion: "0.0.1",
-                        pkgRegex: "zip"
+            parallel{
+                stage("devpiTest simple"){
+                    steps{
+                        library "devpi@$BRANCH_NAME"
+                        devpiTest(
+                                devpiExecutable: "venv\\Scripts\\devpi.exe",
+                                url: "https://devpi.library.illinois.edu",
+                                index: "hborcher/dev",
+                                pkgName: "pyhathiprep",
+                                pkgVersion: "0.0.1",
+                                pkgRegex: "zip"
 
-                )
-            }
-        }
-        stage("Test devpiTest detox"){
-            steps{
-                library "devpi@$BRANCH_NAME"
-                devpiTest(
-                        devpiExecutable: "venv\\Scripts\\devpi.exe",
-                        url: "https://devpi.library.illinois.edu",
-                        index: "hborcher/dev",
-                        pkgName: "hathivalidate",
-                        pkgVersion: "0.1.0",
-                        pkgRegex: "zip",
-                        detox: true
+                        )
+                    }
+                }
+                stage("Test devpiTest detox"){
+                    steps{
+                        library "devpi@$BRANCH_NAME"
+                        devpiTest(
+                                devpiExecutable: "venv\\Scripts\\devpi.exe",
+                                url: "https://devpi.library.illinois.edu",
+                                index: "hborcher/dev",
+                                pkgName: "pyhathiprep",
+                                pkgVersion: "0.1.0",
+                                pkgRegex: "zip",
+                                detox: true
 
-                )
+                        )
+                    }
+                }
             }
+
         }
+
 
     }
 
