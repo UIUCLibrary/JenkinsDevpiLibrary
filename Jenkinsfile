@@ -10,15 +10,15 @@ pipeline{
                 bat "venv\\Scripts\\python.exe -m pip install devpi-client detox"
             }
         }
+        stage("Test Devpi Version"){
+            steps{
+                library "devpi@$BRANCH_NAME"
+                devpiVersion("venv\\Scripts\\devpi.exe")
+            }
+        }
 
         stage("Tests"){
             parallel{
-                stage("Test Devpi Version"){
-                    steps{
-                        library "devpi@$BRANCH_NAME"
-                        devpiVersion("venv\\Scripts\\devpi.exe")
-                    }
-                }
                 stage("test devpiTest simple"){
                     steps{
                         library "devpi@$BRANCH_NAME"
