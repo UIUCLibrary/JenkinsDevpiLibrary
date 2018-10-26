@@ -37,8 +37,8 @@ pipeline{
                         devpiExecutable: "venv\\Scripts\\devpi.exe",
                         url: "https://devpi.library.illinois.edu",
                         index: "hborcher/dev",
-                        pkgName: "pyhathiprep",
-                        pkgVersion: "0.0.1",
+                        pkgName: "hathivalidate",
+                        pkgVersion: "0.1.0",
                         pkgRegex: "zip",
                         detox: true
 
