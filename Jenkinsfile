@@ -40,7 +40,7 @@ pipeline{
                                 url: "https://devpi.library.illinois.edu",
                                 index: "hborcher/dev",
                                 pkgName: "pyhathiprep",
-                                pkgVersion: "0.1.0",
+                                pkgVersion: "0.0.1",
                                 pkgRegex: "zip",
                                 detox: true
 
