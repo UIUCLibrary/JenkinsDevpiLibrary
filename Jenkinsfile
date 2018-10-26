@@ -7,7 +7,7 @@ pipeline{
             steps{
                 bat "${tool 'CPython-3.6'} -m venv venv"
                 bat "venv\\Scripts\\python.exe -m pip install pip --upgrade --quiet"
-                bat "venv\\Scripts\\python.exe -m pip install devpi-client detox"
+                bat "venv\\Scripts\\python.exe -m pip install devpi-client detox==0.13 tox==3.2.1"
             }
         }
         stage("Test Devpi Version"){
