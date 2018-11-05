@@ -1,1 +1,22 @@
 Run Devpi client with test command
+
+# Parameters
+
+* index - DevPi index location
+* pkgName - Python package name
+* pkgRegex - Regex for selecting
+* certsDir - Location to store login certs. OPTIONAL.
+* pkgVersion - Version number of the Python package to test
+* url - Url to devpi server
+* detox - Run in parallel using Detox (Expremental and must be installed).  OPTIONAL.
+
+# Example
+
+    devpiTest(
+        devpiExecutable: "venv\\Scripts\\devpi.exe",
+        url: "https://devpi.library.illinois.edu",
+        index: "DS_Jenkins/dev_staging",
+        pkgName: "foo",
+        pkgVersion: "0.1.2",
+        pkgRegex: "tar.gz"
+    )
