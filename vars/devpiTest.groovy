@@ -1,6 +1,7 @@
 import org.ds.devpi.DevPiTester
 
 def call(Map args) {
+    // Run Devpi client with test command
 
     def defaultArgs = [
         certsDir: "certs\\",
