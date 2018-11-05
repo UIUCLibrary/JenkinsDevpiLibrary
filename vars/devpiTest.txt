@@ -9,6 +9,7 @@ Run Devpi client with test command
 * pkgVersion - Version number of the Python package to test
 * url - Url to devpi server
 * detox - Run in parallel using Detox (Expremental and must be installed).  OPTIONAL.
+* pytestArgs - Additional arguments to run with pytest.  OPTIONAL.
 
 # Example
 
