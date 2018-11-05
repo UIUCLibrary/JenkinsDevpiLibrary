@@ -1,0 +1,1 @@
+Run Devpi client with test command
