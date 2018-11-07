@@ -33,7 +33,7 @@ class DevPiTester implements Serializable{
         }
 
         if(pkgRegex){
-            command += " -s " + pkgRegex
+            command += " -s \"" + pkgRegex + "\""
         }
 
         if(certsDir){
