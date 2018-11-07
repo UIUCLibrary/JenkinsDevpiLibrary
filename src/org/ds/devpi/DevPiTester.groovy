@@ -11,6 +11,7 @@ class DevPiTester implements Serializable{
     public String userName
     public String userPassword
     public Boolean detox
+    public String toxEnvironment
 
     DevPiTester(devpiExecutable) {
         this.devpiExecutable = devpiExecutable
@@ -41,6 +42,11 @@ class DevPiTester implements Serializable{
 
         if(detox){
             command += " --detox"
+        }
+
+        if(toxEnvironment){
+            command += " -e " + toxEnvironment
+
         }
         return  command
     }

@@ -59,4 +59,15 @@ class DevPiTesterTest extends GroovyTestCase{
         assertToString(tester.buildTestCommandString(), "devpi.exe test --index hborcher/dev pyhathiprep==0.0.1 -s zip --clientdir certs\\ --detox")
 
     }
+    void testEnvironmentCommand(){
+        def tester = new DevPiTester("devpi.exe")
+        tester.url = "https://devpi.library.illinois.edu"
+        tester.index = "hborcher/dev"
+        tester.toxEnvironment = "py36"
+        tester.index = "hborcher/dev"
+        tester.pkgName = "pyhathiprep"
+        tester.pkgVersion = "0.0.1"
+        tester.pkgRegex = "zip"
+        assertToString(tester.buildTestCommandString(), "devpi.exe test --index hborcher/dev pyhathiprep==0.0.1 -s zip --clientdir certs\\ -e py36")
+    }
 }

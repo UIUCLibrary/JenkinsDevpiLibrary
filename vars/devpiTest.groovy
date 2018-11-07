@@ -23,6 +23,11 @@ def call(Map args) {
     tester.url = args.url
     tester.detox = args.detox
 
+    if(args.containsKey("toxEnvironment")){
+        tester.toxEnvironment = args.toxEnvironment
+    }
+
+
     withCredentials([usernamePassword(credentialsId: "${args.credentialsId}", usernameVariable: 'DEVPI_USERNAME', passwordVariable: 'DEVPI_PASSWORD')]) {
         tester.userName = "${DEVPI_USERNAME}"
         tester.userPassword = "${DEVPI_PASSWORD}"
