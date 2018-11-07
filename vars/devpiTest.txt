@@ -10,6 +10,7 @@ Run Devpi client with test command
 * url - Url to devpi server
 * detox - Run in parallel using Detox (Expremental and must be installed).  OPTIONAL.
 * pytestArgs - Additional arguments to run with pytest.  OPTIONAL.
+* toxEnvironment - Run certain tox environment OPTIONAL.
 
 # Example
 
