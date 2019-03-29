@@ -23,29 +23,29 @@ class DevPiTester implements Serializable{
         if(!devpiExecutable){
             throw Exception("No path to devpi Executable defined")
         }
-        command += "\"" + devpiExecutable + "\""
-        command += " test"
-        command += " --index " + index
-        command += " " + pkgName
+        command += '"' + devpiExecutable + '"'
+        command += ' "test"'
+        command += ' "--index" "' + index + '"'
+        command += ' "' + pkgName
 
         if(pkgVersion){
             command += "==" + pkgVersion
         }
-
+        command += '"'
         if(pkgRegex){
-            command += " -s \"" + pkgRegex + "\""
+            command += ' "-s" "' + pkgRegex + '"'
         }
 
         if(certsDir){
-            command += " --clientdir " + certsDir
+            command += ' "--clientdir" "' + certsDir + '"'
         }
 
         if(detox){
-            command += " --detox"
+            command += ' "--detox"'
         }
 
         if(toxEnvironment){
-            command += " -e " + toxEnvironment
+            command += ' "-e" "' + toxEnvironment + '"'
 
         }
         return  command
@@ -53,13 +53,13 @@ class DevPiTester implements Serializable{
 
     def buildLogInCommand(){
         def command = ""
-        command += "\"" + devpiExecutable + "\""
-        command += " login " + userName
-        command += " --password " + userPassword
+        command += '"' + devpiExecutable + '"'
+        command += ' "login" "' + userName + '"'
+        command += ' "--password" "' + userPassword + '"'
         if(certsDir){
-            command += " --clientdir " + certsDir
+            command += ' "--clientdir" "' + certsDir + '"'
         }
-        command += " -y"
+        command += ' "-y"'
 
         return command
     }
@@ -67,22 +67,22 @@ class DevPiTester implements Serializable{
     def buildUseCommand() {
 
         def command = ""
-        command += "\"" + devpiExecutable + "\""
-        command += " use " + url
+        command += '"' + devpiExecutable + '"'
+        command += ' "use" "' + url + '"'
 
         if(certsDir){
-            command += " --clientdir " + certsDir
+            command += ' "--clientdir" "' + certsDir + '"'
         }
         return command
     }
 
     def buildSelectIndexCommand() {
         def command = ""
-        command += "\"" + devpiExecutable + "\""
-        command += " use " + index
+        command += '"' + devpiExecutable + '"'
+        command += ' "use" "' + index + '"'
 
         if(certsDir){
-            command += " --clientdir " + certsDir
+            command += ' "--clientdir" "' + certsDir + '"'
         }
         return command
     }
