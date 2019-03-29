@@ -20,7 +20,7 @@ pipeline{
             }
             steps{
                 bat(
-                    script: "pip install pip --upgrade --quiet",
+                    script: "python -m pip install pip --upgrade",
                     label: "Upgrading pip"
                     )
                 bat(
