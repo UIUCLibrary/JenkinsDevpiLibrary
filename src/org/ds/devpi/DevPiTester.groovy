@@ -52,7 +52,6 @@ class DevPiTester implements Serializable{
     }
 
     def buildLogInCommand(){
-
         def command = ""
         command += "\"" + devpiExecutable + "\""
         command += " login " + userName
