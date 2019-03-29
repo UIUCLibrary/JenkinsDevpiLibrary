@@ -1,12 +1,9 @@
 package org.ds.devpi
 
-class DevPiTester implements Serializable{
-    public String url
-    public String index
+class DevPiTester extends AbstractDevPiCommand{
+
     public String pkgName
     public String pkgRegex
-    public String certsDir = "certs\\"
-    public String devpiExecutable
     public String pkgVersion
     public String userName
     public String userPassword
@@ -21,7 +18,7 @@ class DevPiTester implements Serializable{
         def command = ""
 
         if(!devpiExecutable){
-            throw Exception("No path to devpi Executable defined")
+            throw Exception("No path to DevPi Executable defined")
         }
         command += '"' + devpiExecutable + '"'
         command += ' "test"'
@@ -51,39 +48,5 @@ class DevPiTester implements Serializable{
         return  command
     }
 
-    def buildLogInCommand(){
-        def command = ""
-        command += '"' + devpiExecutable + '"'
-        command += ' "login" "' + userName + '"'
-        command += ' "--password" "' + userPassword + '"'
-        if(certsDir){
-            command += ' "--clientdir" "' + certsDir + '"'
-        }
-        command += ' "-y"'
 
-        return command
-    }
-
-    def buildUseCommand() {
-
-        def command = ""
-        command += '"' + devpiExecutable + '"'
-        command += ' "use" "' + url + '"'
-
-        if(certsDir){
-            command += ' "--clientdir" "' + certsDir + '"'
-        }
-        return command
-    }
-
-    def buildSelectIndexCommand() {
-        def command = ""
-        command += '"' + devpiExecutable + '"'
-        command += ' "use" "' + index + '"'
-
-        if(certsDir){
-            command += ' "--clientdir" "' + certsDir + '"'
-        }
-        return command
-    }
 }
