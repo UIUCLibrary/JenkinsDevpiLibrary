@@ -43,7 +43,7 @@ def call(Map args) {
 
     def upload_command = "${uploader.buildUploadCommandString()}".replace("\\", "\\\\")
     bat(
-            label: "Uploading Python packages in ${uploader.distPath} to DevPi index, ${uploader.index}",
-            script: "${upload_command}"
+        label: "Uploading Python packages in ${uploader.distPath} to DevPi index, ${uploader.index}",
+        script: "${upload_command}"
     )
 }
