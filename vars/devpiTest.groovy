@@ -41,7 +41,7 @@ def call(Map args) {
     )
 
     def logginCommand = "${tester.buildLogInCommand()}".replace("\$", "`\$")
-    echo "Runnning ${full_command}"
+    echo "Runnning ${logginCommand}"
     powershell(
         label: "Logging into DevPi server",
         script: "& ${logginCommand}"
