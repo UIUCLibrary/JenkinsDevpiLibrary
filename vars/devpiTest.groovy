@@ -33,12 +33,26 @@ def call(Map args) {
         tester.userPassword = "${DEVPI_PASSWORD}"
     }
     echo "Testing on ${NODE_NAME}"
-    bat "${tester.buildUseCommand()}"
-    bat "${tester.buildLogInCommand()}"
-    bat "${tester.buildSelectIndexCommand()}"
+
+    bat(
+        label: "Configuring DevPi to use server ${tester.url}",
+        script: "${tester.buildUseCommand()}"
+    )
+
+    bat(
+        label: "Logging into DevPi server",
+        script: "${tester.buildLogInCommand()}"
+    )
+    bat(
+        label: "Selecting DevPi index, ${tester.index}",
+        script: "${tester.buildSelectIndexCommand()}"
+    )
 
     withEnv(["PYTEST_ADDOPTS=${args.pytestArgs}"]) {
-        bat "${tester.buildTestCommandString()}"
+        bat(
+            label: "Running Tests DevPi packages ${tester.pkgName}, version ${tester.pkgVersion} with ${args.pkgRegex}",
+            script: "${tester.buildTestCommandString()}"
+        )
     }
 
 }
