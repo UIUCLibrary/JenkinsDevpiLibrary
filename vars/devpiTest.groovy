@@ -40,15 +40,19 @@ def call(Map args) {
         script: "${use_command}"
     )
 
+//    For some reason I need to remove any ^ characters
+//    Escape $ characters
     def logginCommand = "${tester.buildLogInCommand()}".replace("\$", "`\$").replace("^", "")
     echo "Runnning ${logginCommand}"
     powershell(
         label: "Logging into DevPi server",
         script: "& ${logginCommand}"
     )
+
+    def index_command = "${tester.buildSelectIndexCommand()}".replace("\\", "\\\\")
     bat(
         label: "Selecting DevPi index, ${tester.index}",
-        script: "${tester.buildSelectIndexCommand()}"
+        script: "${index_command}"
     )
 
     withEnv(["PYTEST_ADDOPTS=${args.pytestArgs}"]) {
