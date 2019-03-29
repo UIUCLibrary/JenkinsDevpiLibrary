@@ -39,6 +39,7 @@ def call(Map args) {
         script: "${tester.buildUseCommand()}"
     )
     def logginCommand = "${tester.buildLogInCommand()}"
+    logginCommand = logginCommand.replace("`", "``")
     logginCommand = logginCommand.replace("\"", "`\"")
     def full_command = "& \"${logginCommand}\""
     echo "Runnning ${full_command}"
