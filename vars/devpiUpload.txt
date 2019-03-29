@@ -2,7 +2,6 @@ Run DevPi client with upload command
 
 # Parameters
 
-
 * devpiExecutable - path where the devpi executable can be located
 * url - Url to devpi server
 * index - DevPi index location
