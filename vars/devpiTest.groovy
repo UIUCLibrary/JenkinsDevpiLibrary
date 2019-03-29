@@ -54,11 +54,11 @@ def call(Map args) {
         label: "Selecting DevPi index, ${tester.index}",
         script: "${index_command}"
     )
-
+    def test_command = "${tester.buildTestCommandString()}".replace("\\", "\\\\")
     withEnv(["PYTEST_ADDOPTS=${args.pytestArgs}"]) {
         bat(
             label: "Running Tests DevPi packages ${tester.pkgName}, version ${tester.pkgVersion} with ${args.pkgRegex}",
-            script: "${tester.buildTestCommandString()}"
+            script: test_command
         )
     }
 
