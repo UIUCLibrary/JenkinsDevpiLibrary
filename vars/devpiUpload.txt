@@ -1,0 +1,19 @@
+Run DevPi client with upload command
+
+# Parameters
+
+
+* devpiExecutable - path where the devpi executable can be located
+* url - Url to devpi server
+* index - DevPi index location
+* certsDir - Location to store login certs. OPTIONAL.
+* distPath - Location of python packages to upload to devpi.  OPTIONAL.
+
+# Example
+
+    devpiUpload(
+        devpiExecutable: "venv\\Scripts\\devpi.exe",
+        url: "https://devpi.library.illinois.edu",
+        index: "DS_Jenkins/dev_staging",
+        distPath: "dist"
+    )
