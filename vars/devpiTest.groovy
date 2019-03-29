@@ -34,10 +34,12 @@ def call(Map args) {
     }
     echo "Testing on ${NODE_NAME}"
 
+    def use_command = "${tester.buildUseCommand()}".replace("\\", "\\\\")
     bat(
         label: "Configuring DevPi to use server ${tester.url}",
-        script: "${tester.buildUseCommand()}"
+        script: "${use_command}"
     )
+
     def logginCommand = "${tester.buildLogInCommand()}"
     def full_command = "& ${logginCommand}"
     echo "Runnning ${full_command}"
