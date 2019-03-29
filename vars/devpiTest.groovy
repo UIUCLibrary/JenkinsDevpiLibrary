@@ -36,8 +36,8 @@ def call(Map args) {
 
     def use_command = "${tester.buildUseCommand()}".replace("\\", "\\\\")
     bat(
+        script: "${use_command}",
         label: "Configuring DevPi to use server ${tester.url}",
-        script: "${use_command}"
     )
 
 //    For some reason I need to remove any ^ characters
