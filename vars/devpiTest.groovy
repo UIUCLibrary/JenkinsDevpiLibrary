@@ -39,7 +39,7 @@ def call(Map args) {
         script: "${tester.buildUseCommand()}"
     )
 
-    bat(
+    powershell(
         label: "Logging into DevPi server",
         script: "${tester.buildLogInCommand()}"
     )
