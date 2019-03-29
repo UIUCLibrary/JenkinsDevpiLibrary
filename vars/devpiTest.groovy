@@ -1,5 +1,4 @@
 import org.ds.devpi.DevPiTester
-import groovy.json.StringEscapeUtils
 
 def call(Map args) {
     // Run Devpi client with test command
@@ -39,7 +38,8 @@ def call(Map args) {
         label: "Configuring DevPi to use server ${tester.url}",
         script: "${tester.buildUseCommand()}"
     )
-    def logginCommand = StringEscapeUtils.escapeJava("${tester.buildLogInCommand()}")
+    def logginCommand = "${tester.buildLogInCommand()}"
+    logginCommand = logginCommand.replace("\"", "\\\"")
     powershell(
         label: "Logging into DevPi server",
         script: "& \"${logginCommand}\""
