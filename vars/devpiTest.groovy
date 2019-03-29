@@ -41,7 +41,7 @@ def call(Map args) {
 
     powershell(
         label: "Logging into DevPi server",
-        script: "cmd.exe /c \"${tester.buildLogInCommand()}\""
+        script: "${tester.buildLogInCommand()}"
     )
     bat(
         label: "Selecting DevPi index, ${tester.index}",

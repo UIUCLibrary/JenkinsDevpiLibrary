@@ -12,7 +12,7 @@ class DevPiTesterTest extends GroovyTestCase{
         tester.pkgName = "pyhathiprep"
         tester.pkgVersion = "0.0.1"
         tester.pkgRegex = "zip"
-        assertToString(tester.buildTestCommandString(), "devpi.exe test --index hborcher/dev pyhathiprep==0.0.1 -s \"zip\" --clientdir certs\\")
+        assertToString(tester.buildTestCommandString(), "\"devpi.exe\" test --index hborcher/dev pyhathiprep==0.0.1 -s \"zip\" --clientdir certs\\")
     }
 
     void testNormalTestCommandAnyVersion() {
@@ -21,7 +21,7 @@ class DevPiTesterTest extends GroovyTestCase{
         tester.index = "hborcher/dev"
         tester.pkgName = "pyhathiprep"
 
-        assertToString(tester.buildTestCommandString(), "devpi.exe test --index hborcher/dev pyhathiprep --clientdir certs\\")
+        assertToString(tester.buildTestCommandString(), "\"devpi.exe\" test --index hborcher/dev pyhathiprep --clientdir certs\\")
     }
     void testNoDevpiExecutable() {
         shouldFail {
@@ -35,17 +35,17 @@ class DevPiTesterTest extends GroovyTestCase{
         tester.userName = "myusername"
         tester.userPassword = "mypassword"
 
-        assertToString(tester.buildLogInCommand(), "devpi.exe login myusername --password mypassword --clientdir certs\\ -y" )
+        assertToString(tester.buildLogInCommand(), "\"devpi.exe\" login myusername --password mypassword --clientdir certs\\ -y" )
     }
     void testUseCommand(){
         def tester = new DevPiTester("devpi.exe")
         tester.url = "https://devpi.library.illinois.edu"
-        assertToString(tester.buildUseCommand(), "devpi.exe use https://devpi.library.illinois.edu --clientdir certs\\" )
+        assertToString(tester.buildUseCommand(), "\"devpi.exe\" use https://devpi.library.illinois.edu --clientdir certs\\" )
     }
     void testBuildSelectIndexCommand(){
         def tester = new DevPiTester("devpi.exe")
         tester.index = "hborcher/dev"
-        assertToString(tester.buildSelectIndexCommand(), "devpi.exe use hborcher/dev --clientdir certs\\")
+        assertToString(tester.buildSelectIndexCommand(), "\"devpi.exe\" use hborcher/dev --clientdir certs\\")
     }
 
     void testDetoxTextCommand(){
@@ -56,7 +56,7 @@ class DevPiTesterTest extends GroovyTestCase{
         tester.pkgVersion = "0.0.1"
         tester.pkgRegex = "zip"
         tester.detox = true
-        assertToString(tester.buildTestCommandString(), "devpi.exe test --index hborcher/dev pyhathiprep==0.0.1 -s \"zip\" --clientdir certs\\ --detox")
+        assertToString(tester.buildTestCommandString(), "\"devpi.exe\" test --index hborcher/dev pyhathiprep==0.0.1 -s \"zip\" --clientdir certs\\ --detox")
 
     }
     void testEnvironmentCommand(){
@@ -68,6 +68,6 @@ class DevPiTesterTest extends GroovyTestCase{
         tester.pkgName = "pyhathiprep"
         tester.pkgVersion = "0.0.1"
         tester.pkgRegex = "zip"
-        assertToString(tester.buildTestCommandString(), "devpi.exe test --index hborcher/dev pyhathiprep==0.0.1 -s \"zip\" --clientdir certs\\ -e py36")
+        assertToString(tester.buildTestCommandString(), "\"devpi.exe\" test --index hborcher/dev pyhathiprep==0.0.1 -s \"zip\" --clientdir certs\\ -e py36")
     }
 }

@@ -23,7 +23,7 @@ class DevPiTester implements Serializable{
         if(!devpiExecutable){
             throw Exception("No path to devpi Executable defined")
         }
-        command += devpiExecutable
+        command += "\"" + devpiExecutable + "\""
         command += " test"
         command += " --index " + index
         command += " " + pkgName
@@ -54,7 +54,7 @@ class DevPiTester implements Serializable{
     def buildLogInCommand(){
 
         def command = ""
-        command += devpiExecutable
+        command += "\"" + devpiExecutable + "\""
         command += " login " + userName
         command += " --password " + userPassword
         if(certsDir){
@@ -68,7 +68,7 @@ class DevPiTester implements Serializable{
     def buildUseCommand() {
 
         def command = ""
-        command += devpiExecutable
+        command += "\"" + devpiExecutable + "\""
         command += " use " + url
 
         if(certsDir){
@@ -79,7 +79,7 @@ class DevPiTester implements Serializable{
 
     def buildSelectIndexCommand() {
         def command = ""
-        command += devpiExecutable
+        command += "\"" + devpiExecutable + "\""
         command += " use " + index
 
         if(certsDir){
