@@ -3,11 +3,30 @@ pipeline{
         label "Windows && Python3"
     }
     stages{
-        stage("get devpi in a venv"){
+        stage("Creating a Python venv"){
+            environment{
+                path = "${tool 'CPython-3.6'};${PATH}"
+            }
             steps{
-                bat "${tool 'CPython-3.6'} -m venv venv"
-                bat "venv\\Scripts\\python.exe -m pip install pip --upgrade --quiet"
-                bat "venv\\Scripts\\python.exe -m pip install devpi-client detox==0.13 tox==3.2.1"
+                bat(
+                    label: "Create a new Python Virtual Environment",
+                    script: "python -m venv venv"
+                )
+            }
+        }
+        stage("Install DevPi to a venv"){
+            environment{
+                path = "${WORKSPACE}\\venv\\Scripts\\;${PATH}"
+            }
+            steps{
+                bat(
+                    script: "pip install pip --upgrade --quiet",
+                    label: "Upgrading pip"
+                    )
+                bat(
+                    script: 'pip install devpi-client "detox==0.13" "tox==3.2.1"',
+                    label: "Installing latest devpi client, Tox version 3.2.1, and Detox version 0.13"
+                )
             }
         }
         stage("Test Devpi Version"){
