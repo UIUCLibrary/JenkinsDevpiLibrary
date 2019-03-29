@@ -5,6 +5,8 @@ abstract class AbstractDevPiCommand implements Serializable {
     public String index
     public String devpiExecutable
     public String certsDir = "certs\\"
+    public String userName
+    public String userPassword
 
     def buildLogInCommand(){
         def command = ""

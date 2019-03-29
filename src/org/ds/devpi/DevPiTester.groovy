@@ -5,8 +5,6 @@ class DevPiTester extends AbstractDevPiCommand{
     public String pkgName
     public String pkgRegex
     public String pkgVersion
-    public String userName
-    public String userPassword
     public Boolean detox
     public String toxEnvironment
 
