@@ -88,5 +88,10 @@ pipeline{
 
 
     }
+    post{
+        cleanup{
+            deleteDir()
+        }
+    }
 
 }
