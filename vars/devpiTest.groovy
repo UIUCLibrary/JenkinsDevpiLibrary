@@ -40,7 +40,7 @@ def call(Map args) {
         )
         def logginCommand = "${tester.buildLogInCommand()}".replace("\$", "`\$").replace("^", "")
         sh(label: "Logging into DevPi server",
-           script: logginCommand
+           script: logginCommand.join(" ")
         )
         def index_command = "${tester.buildSelectIndexCommand()}".replace("\\", "\\\\")
         sh(label: "Selecting DevPi index, ${tester.index}",
