@@ -113,13 +113,5 @@ pipeline{
             }
 
         }
-
-
     }
-    post{
-        cleanup{
-            deleteDir()
-        }
-    }
-
 }
