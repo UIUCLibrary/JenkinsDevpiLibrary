@@ -13,37 +13,38 @@ class DevPiTester extends AbstractDevPiCommand{
     }
 
     def buildTestCommandString(){
-        def command = ""
+        def command = []
 
         if(!devpiExecutable){
             throw Exception("No path to DevPi Executable defined")
         }
-        command += '"' + devpiExecutable + '"'
-        command += ' "test"'
-        command += ' "--index" "' + index + '"'
-        command += ' "' + pkgName
+        command << devpiExecutable
+        command << "test"
+        command << "--index" << index
+
 
         if(pkgVersion){
-            command += "==" + pkgVersion
+            command << "${pkgName}==${pkgVersion}"
+        } else {
+            command << pkgName
         }
-        command += '"'
         if(pkgRegex){
-            command += ' "-s" "' + pkgRegex + '"'
+            command << "-s" <<  pkgRegex
         }
 
         if(certsDir){
-            command += ' "--clientdir" "' + certsDir + '"'
+            command << "--clientdir" << certsDir
         }
 
         if(detox){
-            command += ' "--detox"'
+            command << "--detox"
         }
 
         if(toxEnvironment){
-            command += ' "-e" "' + toxEnvironment + '"'
+            command << "-e" << toxEnvironment
 
         }
-        return  command
+        return  command.join(" ")
     }
 
 
