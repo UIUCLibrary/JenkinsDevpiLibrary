@@ -10,8 +10,8 @@ abstract class AbstractDevPiCommand implements Serializable {
 
     def buildLogInCommand(){
         def command = []
-        command << '"' << devpiExecutable
-        command << login << userName
+        command << devpiExecutable
+        command << "login" << userName
         command << "--password" << userPassword
         if(certsDir){
             command << '--clientdir' << certsDir
