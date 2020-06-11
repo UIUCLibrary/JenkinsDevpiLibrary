@@ -23,14 +23,14 @@ abstract class AbstractDevPiCommand implements Serializable {
 
     def buildUseCommand() {
 
-        def command = ""
-        command += '"' + devpiExecutable + '"'
-        command += ' "use" "' + url + '"'
+        def command = []
+        command << devpiExecutable
+        command << "use" << url
 
         if(certsDir){
-            command += ' "--clientdir" "' + certsDir + '"'
+            command << "--clientdir" << certsDir
         }
-        return command
+        return command.join(" ")
     }
 
     def buildSelectIndexCommand() {

@@ -34,9 +34,9 @@ def call(Map args) {
     }
     echo "Testing on ${NODE_NAME}"
     if(isUnix()){
-        def use_command = "${tester.buildUseCommand()}".replace("\\", "\\\\")
-        sh(script: "${use_command}",
-           label: "Configuring DevPi to use server ${tester.url}",
+//        def use_command = "${tester.buildUseCommand()}".replace("\\", "\\\\")
+        sh(label: "Configuring DevPi to use server ${tester.url}",
+           script: tester.buildUseCommand(),
         )
         sh(label: "Logging into DevPi server",
            script: tester.buildLogInCommand()
