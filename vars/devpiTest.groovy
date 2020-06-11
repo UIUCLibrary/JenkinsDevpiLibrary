@@ -42,12 +42,10 @@ def call(Map args) {
         sh(label: "Logging into DevPi server",
            script: tester.buildLogInCommand()
         )
-        echo "HERER"
-//        def selectIndexCommand = tester.buildSelectIndexCommand()
-//        sh(label: "Selecting DevPi index, ${tester.index}",
-//           script: selectIndexCommand
-//        )
-//
+        sh(label: "Selecting DevPi index, ${tester.index}",
+           script: tester.buildSelectIndexCommand()
+        )
+
 ////        def test_command = "${tester.buildTestCommandString()}".replace("\\", "\\\\")
 //        withEnv(["PYTEST_ADDOPTS=${args.pytestArgs}"]) {
 //            sh(label: "Running Tests DevPi packages ${tester.pkgName}, version ${tester.pkgVersion} with ${args.pkgRegex}",
