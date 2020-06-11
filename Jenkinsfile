@@ -90,9 +90,7 @@ pipeline{
                     steps{
                         library "devpi@$BRANCH_NAME"
                         script{
-                            def devpi_exec = sh(
-                                returnStdout: true,
-                                script: 'which devpi').trim()
+                            def devpi_exec = sh( returnStdout: true, script: "which devpi").trim()
 
                             devpiTest(
                                     devpiExecutable: "${devpi_exec}",
