@@ -3,7 +3,7 @@ import org.ds.devpi.DevPiUploader
 def call(Map args) {
     // Run Devpi client with upload command
     def defaultArgs = [
-            certsDir: "certs\\",
+            certsDir: "./certs/",
             credentialsId: "DS_devpi",
             distPath: "dist"
     ]

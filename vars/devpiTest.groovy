@@ -4,7 +4,7 @@ def call(Map args) {
     // Run Devpi client with test command
 
     def defaultArgs = [
-        certsDir: "certs\\",
+        certsDir: "./certs/",
         pytestArgs: "-vv",
         credentialsId: "DS_devpi",
         detox: false
