@@ -57,7 +57,7 @@ pipeline{
                         }
                         script{
                             def devpi_exec = powershell(returnStdout: true,
-                                                        script: "Find-Command -name devpi").trim()
+                                                        script: "(Find-Command devpi).path").trim()
                             devpiTest(
                                     devpiExecutable: devpi_exec,
                                     url: "https://devpi.library.illinois.edu",
