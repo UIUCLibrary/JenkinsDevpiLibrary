@@ -42,8 +42,7 @@ def call(Map args) {
         sh(label: "Logging into DevPi server",
            script: tester.buildLogInCommand()
         )
-        echo "HERER"
-        sh(label: "Selecting DevPi index, ${tester.index}",
+        sh(label: "Selecting DevPi index",
            script: tester.buildSelectIndexCommand()
         )
 
