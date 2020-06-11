@@ -27,7 +27,9 @@ pipeline{
                         }
                     }
                     steps{
-                        library "devpi@$BRANCH_NAME"
+                        lock("devpi-library"){
+                            library "devpi@$BRANCH_NAME"
+                        }
                         script{
                             def devpi_exec = sh( returnStdout: true, script: "which devpi").trim()
                             devpiTest(
@@ -50,7 +52,9 @@ pipeline{
                         }
                     }
                     steps{
-                        library "devpi@$BRANCH_NAME"
+                        lock("devpi-library"){
+                            library "devpi@$BRANCH_NAME"
+                        }
                         script{
                             def devpi_exec = bat( returnStdout: true, script: "where devpi").trim()
                             devpiTest(
