@@ -9,3 +9,5 @@ RUN python -m pip install --upgrade pip ; pip install devpi-client "tox<3.7"
 ENV TMP=c:\temp `
     TMPDIR=c:\temp `
     TEMP=c:\temp
+
+RUN tzutil /s "America/Chicago"
