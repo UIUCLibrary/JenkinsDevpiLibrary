@@ -16,7 +16,7 @@ abstract class AbstractDevPiCommand implements Serializable {
         if(certsDir){
             command << '--clientdir' << certsDir
         }
-        command << -y
+        command << "-y"
 
         return command.join(' ')
     }
