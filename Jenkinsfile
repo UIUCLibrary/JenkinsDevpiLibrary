@@ -56,9 +56,8 @@ pipeline{
                             library "devpi@$BRANCH_NAME"
                         }
                         script{
-                            def devpi_exec = bat(returnStdout: true,
-                                                 script: "where devpi").trim()
-                             echo "Using ${devpi_exec}"
+                            def devpi_exec = powershell(returnStdout: true,
+                                                        script: "Find-Command -name devpi").trim()
                             devpiTest(
                                     devpiExecutable: devpi_exec,
                                     url: "https://devpi.library.illinois.edu",
