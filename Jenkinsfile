@@ -18,7 +18,7 @@ pipeline{
 //         }
         stage("Tests"){
 
-            parallel{
+            stages{
                 stage("test devpiTest simple on linux"){
                     agent {
                         dockerfile {
