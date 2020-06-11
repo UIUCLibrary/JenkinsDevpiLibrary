@@ -42,7 +42,7 @@ def call(Map args) {
         sh(label: "Logging into DevPi server",
            script: tester.buildLogInCommand()
         )
-//        def index_command = "${tester.buildSelectIndexCommand()}".replace("\\", "\\\\")
+        echo "HERER"
         sh(label: "Selecting DevPi index, ${tester.index}",
            script: tester.buildSelectIndexCommand()
         )
