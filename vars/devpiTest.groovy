@@ -62,10 +62,9 @@ def call(Map args) {
 
     //    For some reason I need to remove any ^ characters
     //    Escape $ characters
-        def logginCommand = "${tester.buildLogInCommand()}".replace("\$", "`\$").replace("^", "")
         powershell(
             label: "Logging into DevPi server",
-            script: "& ${logginCommand}"
+            script: "& ${tester.buildLogInCommand()}"
         )
 
         def index_command = "${tester.buildSelectIndexCommand()}".replace("\\", "\\\\")
