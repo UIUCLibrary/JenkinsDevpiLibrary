@@ -46,12 +46,11 @@ def call(Map args) {
            script: tester.buildSelectIndexCommand()
         )
 
-////        def test_command = "${tester.buildTestCommandString()}".replace("\\", "\\\\")
-//        withEnv(["PYTEST_ADDOPTS=${args.pytestArgs}"]) {
-//            sh(label: "Running Tests DevPi packages ${tester.pkgName}, version ${tester.pkgVersion} with ${args.pkgRegex}",
-//               script: tester.buildTestCommandString()
-//            )
-//        }
+        withEnv(["PYTEST_ADDOPTS=${args.pytestArgs}"]) {
+            sh(label: "Running Tests DevPi packages ${tester.pkgName}, version ${tester.pkgVersion} with ${args.pkgRegex}",
+               script: tester.buildTestCommandString()
+            )
+        }
     } else {
         def use_command = "${tester.buildUseCommand()}".replace("\\", "\\\\")
         bat(
