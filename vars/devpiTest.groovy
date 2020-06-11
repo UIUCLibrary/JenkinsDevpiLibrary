@@ -40,11 +40,11 @@ def call(Map args) {
         )
         def logginCommand = "${tester.buildLogInCommand()}".replace("\$", "`\$").replace("^", "")
         sh(label: "Logging into DevPi server",
-           script: "& ${logginCommand}"
+           script: logginCommand
         )
         def index_command = "${tester.buildSelectIndexCommand()}".replace("\\", "\\\\")
         sh(label: "Selecting DevPi index, ${tester.index}",
-           script: "${index_command}"
+           script: index_command
         )
 
         def test_command = "${tester.buildTestCommandString()}".replace("\\", "\\\\")
@@ -65,13 +65,13 @@ def call(Map args) {
         def logginCommand = "${tester.buildLogInCommand()}".replace("\$", "`\$").replace("^", "")
         powershell(
             label: "Logging into DevPi server",
-            script: logginCommand
+            script: "& ${logginCommand}"
         )
 
         def index_command = "${tester.buildSelectIndexCommand()}".replace("\\", "\\\\")
         bat(
             label: "Selecting DevPi index, ${tester.index}",
-            script: index_command
+            script: "${index_command}"
         )
 
         def test_command = "${tester.buildTestCommandString()}".replace("\\", "\\\\")
