@@ -10,4 +10,4 @@ ENV TMP=c:\temp `
     TMPDIR=c:\temp `
     TEMP=c:\temp
 SHELL ["cmd", "/S", "/C"]
-RUN tzutil /s "America/Chicago"
+RUN tzutil /s "Central Standard Time"
